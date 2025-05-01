@@ -1,13 +1,8 @@
-//
-//  ProductSearchModel.swift
 //  Ellergic-iOS
-//
-//  Created by Howes, Derek on 4/29/25.
-//
 
 import Foundation
 
-struct SearchProductResults: Codable {
+struct ProductByUpcResults: Codable {
     let id: Int
     let title: String
     let badges: [String]
@@ -21,8 +16,8 @@ struct SearchProductResults: Codable {
     let ingredientList: String
 }
 
-struct Ingredient: Codable {
+struct Ingredient: Codable, Hashable {
     let name: String
-    let safetyLevel: String
-    let description: String
+    let safety_level: String?
+    let description: String?
 }

@@ -1,9 +1,5 @@
-//
-//  ContentView.swift
 //  Ellergic-iOS
-//
-//  Created by Derek Howes on 4/28/25.
-//
+
 
 import SwiftUI
 import Foundation
@@ -21,10 +17,11 @@ struct ContentView: View {
                         try await viewModel.callAPI()
                     }
                 }
-            Text("Ellergic")
 
             if let returnedResults = viewModel.returnedResults {
-                Text("\(returnedResults.ingredientList)")
+                List(returnedResults.ingredients, id: \.self) { ingredient in
+                    Text(ingredient.name)
+                }
             }
         }
         .padding()

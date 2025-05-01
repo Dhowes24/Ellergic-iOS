@@ -1,0 +1,344 @@
+{
+  "breadcrumbs": [
+    "creme eggs",
+    "chocolate eggs",
+    "candy eggs",
+    "candy",
+    "ingredient"
+  ],
+  "category": "creme eggs",
+  "usdaCode": null,
+  "id": 132470,
+  "title": "CADBURY, Milk Chocolate with Caramel Mini Eggs Candy, Easter, 3.8 oz, Pack",
+  "price": 3.880000114440918,
+  "likes": 0,
+  "badges": [
+    "egg_free",
+    "wheat_free",
+    "peanut_free",
+    "vegetarian",
+    "nut_free",
+    "pescetarian",
+    "gluten_free"
+  ],
+  "importantBadges": ["gluten_free", "wheat_free"],
+  "nutrition": {
+    "nutrients": [
+      {
+        "name": "Alcohol",
+        "amount": 0.0,
+        "unit": "g",
+        "percentOfDailyNeeds": 100.0
+      },
+      {
+        "name": "Caffeine",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Calcium",
+        "amount": 40.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 4.0
+      },
+      {
+        "name": "Carbohydrates",
+        "amount": 23.0,
+        "unit": "g",
+        "percentOfDailyNeeds": 7.67
+      },
+      {
+        "name": "Cholesterol",
+        "amount": 6.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 2.0
+      },
+      {
+        "name": "Choline",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Copper",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Calories",
+        "amount": 180.0,
+        "unit": "kcal",
+        "percentOfDailyNeeds": 9.0
+      },
+      {
+        "name": "Fat",
+        "amount": 9.0,
+        "unit": "g",
+        "percentOfDailyNeeds": 13.85
+      },
+      {
+        "name": "Saturated Fat",
+        "amount": 5.0,
+        "unit": "g",
+        "percentOfDailyNeeds": 31.25
+      },
+      {
+        "name": "Trans Fat",
+        "amount": 0.0,
+        "unit": "g",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Fiber",
+        "amount": 0.0,
+        "unit": "g",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Fluoride",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Folate",
+        "amount": 0.0,
+        "unit": "µg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Folic Acid",
+        "amount": 0.0,
+        "unit": "µg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Iodine",
+        "amount": 0.0,
+        "unit": "µg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Iron",
+        "amount": 0.36,
+        "unit": "mg",
+        "percentOfDailyNeeds": 2.0
+      },
+      {
+        "name": "Magnesium",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Manganese",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Vitamin B3",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Vitamin B5",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Phosphorus",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Potassium",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Protein",
+        "amount": 2.0,
+        "unit": "g",
+        "percentOfDailyNeeds": 4.0
+      },
+      {
+        "name": "Vitamin B2",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Selenium",
+        "amount": 0.0,
+        "unit": "µg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Sodium",
+        "amount": 45.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 1.96
+      },
+      {
+        "name": "Sugar",
+        "amount": 16.0,
+        "unit": "g",
+        "percentOfDailyNeeds": 17.78
+      },
+      {
+        "name": "Sugar Alcohol",
+        "amount": 0.0,
+        "unit": "g",
+        "percentOfDailyNeeds": 100.0
+      },
+      {
+        "name": "Vitamin B1",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Vitamin A",
+        "amount": 100.0,
+        "unit": "IU",
+        "percentOfDailyNeeds": 2.0
+      },
+      {
+        "name": "Vitamin B12",
+        "amount": 0.0,
+        "unit": "µg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Vitamin B6",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Vitamin C",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Vitamin D",
+        "amount": 0.0,
+        "unit": "µg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Vitamin E",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Vitamin K",
+        "amount": 0.0,
+        "unit": "µg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Zinc",
+        "amount": 0.0,
+        "unit": "mg",
+        "percentOfDailyNeeds": 0.0
+      },
+      {
+        "name": "Net Carbohydrates",
+        "amount": 23.0,
+        "unit": "g",
+        "percentOfDailyNeeds": 8.36
+      }
+    ],
+    "caloricBreakdown": {
+      "percentProtein": 4.42,
+      "percentFat": 44.75,
+      "percentCarbs": 50.83
+    },
+    "calories": 180.0,
+    "fat": "9g",
+    "protein": "2g",
+    "carbs": "23g"
+  },
+  "servings": {
+    "number": 3.0,
+    "size": 4.0,
+    "unit": "pieces",
+    "raw": "4.0 pieces (36 g)"
+  },
+  "spoonacularScore": 100.0,
+  "aisle": null,
+  "description": "If you're planning an Easter celebration full of classic traditions like Easter baskets and egg hunts, you need a box full of classic chocolate treats like CADBURY Caramel Eggs. These miniature seasonal candy snacks are made of creamy milk chocolate with gooey, delicious caramel at the center. Thanks to their small size, egg shape and seasonal foil, they'll fit in perfectly with the rest of your Easter festivities. Fill your candy dish, lunch box and snack cabinet at home and work with delightful chocolate eggs individually wrapped for lasting freshness throughout the season. Don't forget to save a few for on-the-go enjoyment and movie night snacking Peter Cottontail would approve of! In the sharing spirit? Make Easter baskets for your coworkers, friends and family members, and pack those baskets with CADBURY mini caramel-filled eggs they're sure to love. Looking for a new experiment? Try a caramel egg topping on your best baked brownies or cookies—it's sure to be an Easter hit.",
+  "image": "https://img.spoonacular.com/products/132470-312x231.jpeg",
+  "imageType": "jpeg",
+  "images": [
+    "https://img.spoonacular.com/products/132470-90x90.jpeg",
+    "https://img.spoonacular.com/products/132470-312x231.jpeg",
+    "https://img.spoonacular.com/products/132470-636x393.jpeg"
+  ],
+  "generatedText": "Thinking about having some eggs today? Cadbury Creme Egg is one option; let's take a closer look. This product contains no ingredients that some research suggests you should avoid. This product has 27 ingredients (in our experience: the fewer ingredients, the better!) This product contains 180 calories, 9g grams of fat, 2g grams of protein, and 23g grams of carbs per serving.",
+  "upc": "034000011346",
+  "brand": "Cadbury",
+  "ingredients": [
+    { "name": "natural", "safety_level": null, "description": null },
+    { "name": "anticaking agent", "safety_level": null, "description": null },
+    {
+      "name": "artificial flavor",
+      "safety_level": "medium",
+      "description": null
+    },
+    { "name": "added sugar", "safety_level": null, "description": null },
+    { "name": "acidity regulator", "safety_level": null, "description": null },
+    { "name": "stabilizer", "safety_level": null, "description": null },
+    { "name": "milk", "safety_level": null, "description": null },
+    { "name": "lecithin", "safety_level": null, "description": null },
+    { "name": "vegetable oil", "safety_level": null, "description": null },
+    { "name": "sodium carbonate", "safety_level": "high", "description": null },
+    { "name": "cooking fat", "safety_level": null, "description": null },
+    { "name": "refined sweetener", "safety_level": null, "description": null },
+    { "name": "cooking oil", "safety_level": null, "description": null },
+    { "name": "chocolate", "safety_level": null, "description": null },
+    { "name": "palm oil", "safety_level": null, "description": null },
+    { "name": "sugar", "safety_level": null, "description": null },
+    { "name": "additive", "safety_level": null, "description": null },
+    {
+      "name": "high fructose corn syrup",
+      "safety_level": "controversial",
+      "description": null
+    },
+    { "name": "cocoa butter", "safety_level": "high", "description": null },
+    { "name": "milk fat", "safety_level": "high", "description": null },
+    { "name": "nonfat milk", "safety_level": null, "description": null },
+    { "name": "milk chocolate", "safety_level": null, "description": null },
+    { "name": "leavening", "safety_level": "high", "description": null },
+    { "name": "corn syrup", "safety_level": null, "description": null },
+    { "name": "emulsifier", "safety_level": null, "description": null },
+    {
+      "name": "soy lecithin",
+      "safety_level": "high",
+      "description": "Soy lecithin is <a href=\"http://farrp.unl.edu/resources/gi-fas/opinion-and-summaries/soy-lecithin\">not a concern</a> for most people allergic to soy."
+    },
+    { "name": "sweetener", "safety_level": null, "description": null },
+    { "name": "nutrient", "safety_level": null, "description": null },
+    { "name": "drink", "safety_level": null, "description": null },
+    { "name": "mineral", "safety_level": null, "description": null },
+    { "name": "salt", "safety_level": null, "description": null }
+  ],
+  "ingredientCount": 31,
+  "ingredientList": "Milk Chocolate (Sugar, Milk, Chocolate, Cocoa Butter, Milk Fat, Nonfat Milk, Soy Lecithin, Natural and Artificial Flavor), Corn Syrup, High Fructose Corn Syrup, Sugar, Nonfat Milk, Palm Oil, Contains 2% or Less of: Artificial Flavor, Salt, Soy Lecithin, Sodium Carbonate",
+  "credits": {
+    "text": "openfoodfacts.org under (ODbL) v1.0",
+    "link": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "image": "openfoodfacts.org under CC BY-SA 3.0 DEED",
+    "imageLink": "https://creativecommons.org/licenses/by-sa/3.0/deed.en"
+  }
+}
