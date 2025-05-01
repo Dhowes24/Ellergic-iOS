@@ -1,19 +1,28 @@
-//
-//  ContentView.swift
 //  Ellergic-iOS
-//
-//  Created by Derek Howes on 4/28/25.
-//
+
 
 import SwiftUI
+import Foundation
 
 struct ContentView: View {
+    @StateObject private var viewModel = ContentViewModel()
+
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+                .onTapGesture {
+                    Task {
+                        try await viewModel.callAPI()
+                    }
+                }
+
+            if let returnedResults = viewModel.returnedResults {
+                List(returnedResults.ingredients, id: \.self) { ingredient in
+                    Text(ingredient.name)
+                }
+            }
         }
         .padding()
     }
