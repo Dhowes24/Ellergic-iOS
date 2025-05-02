@@ -5,7 +5,7 @@ import Foundation
 
 @MainActor
 class ContentViewModel: ObservableObject {
-    let spoonacularProvider = SpoonacularProvider()
+    let spoonacularProvider = SpoonacularManager(networkingService: MockNetworkingService())
 
     @Published var returnedResults: ProductByUpcResults?
 
@@ -13,6 +13,6 @@ class ContentViewModel: ObservableObject {
     }
 
     func callAPI() async throws {
-        self.returnedResults = try await spoonacularProvider.fetchProductByUPCTestData()
+        self.returnedResults = try await spoonacularProvider.findProductIngredients()
     }
 }
