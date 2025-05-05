@@ -6,7 +6,7 @@ import Foundation
 public class SpoonacularManager {
     //Temp storage, will change and reset key
     let searchProductsByUpcString = "https://api.spoonacular.com/food/products/upc/"
-    let apiKey = "f241f7a5375a43088714e9c61321501d"
+    let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String
 
     let networkingService: NetworkingService
 
@@ -16,7 +16,8 @@ public class SpoonacularManager {
 
     //Test UPC for Cadbury Eggs
     func buildURL(with UPC: String) -> URL? {
-        URL(string: "\(searchProductsByUpcString)\(UPC)?apiKey=\(apiKey)")
+        guard let key = apiKey else { return nil }
+        return URL(string: "\(searchProductsByUpcString)\(UPC)?apiKey=\(key)")
     }
 
     func decodeResults(from json: Data) throws -> ProductByUpcResults {
