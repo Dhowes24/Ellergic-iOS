@@ -5,6 +5,8 @@ import Foundation
 
 @MainActor
 class ContentViewModel: ObservableObject {
+    // Currently using mock data
+    // Defaults to actual service if arguement is removed
     let spoonacularProvider = SpoonacularManager(networkingService: MockNetworkingService())
 
     @Published var returnedResults: ProductByUpcResults?
