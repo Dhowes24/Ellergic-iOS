@@ -17,13 +17,9 @@ struct ContentView: View {
                 Image(systemName: "tortoise")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
-                    .onTapGesture {
-                        Task {
-                            try await docViewModel.callAPI()
-                        }
-                    }
 
                 if let returnedResults = docViewModel.returnedResults {
+                    Text(returnedResults.title)
                     List(returnedResults.ingredients, id: \.self) { ingredient in
                         Text(ingredient.name)
                     }

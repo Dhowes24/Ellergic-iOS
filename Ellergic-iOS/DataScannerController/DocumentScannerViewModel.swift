@@ -9,7 +9,7 @@ import Combine
 
 @MainActor
 class DocumentScannerViewModel: ObservableObject {
-    let spoonacularProvider = SpoonacularManager(networkingService: MockNetworkingService())
+    let spoonacularProvider = SpoonacularManager()
 
     @Published var returnedResults: ProductByUpcResults?
     @Published var roundBoxMappings: [UUID: UIView] = [:]
@@ -29,8 +29,14 @@ class DocumentScannerViewModel: ObservableObject {
         observeModalState()
     }
 
-    func callAPI() async throws {
-        self.returnedResults = try await spoonacularProvider.findProductIngredients()
+    // Test UPC for Cadbury Eggs
+    func callAPI(for UPC: String?) async throws {
+        if let UPC {
+            self.returnedResults = try await spoonacularProvider.findProductIngredients(for: UPC)
+        } else {
+            //TODO: Eventual Error handleing
+            self.returnedResults = try await spoonacularProvider.findProductIngredients(for: "0074890001959")
+        }
     }
 
     private func observeModalState() {
@@ -48,16 +54,17 @@ class DocumentScannerViewModel: ObservableObject {
     func processItem(item: RecognizedItem) {
         switch item {
         case .text:
-            print("Should not happen")
+            break
         case .barcode(let code):
-            print(code.payloadStringValue ?? "Could not determine")
             let frame = getRoundBoxFrame(item: item)
             addRoundBoxToItem(frame: frame, text: code.payloadStringValue ?? "Cannot determine", item: item)
-            DispatchQueue.main.async {
-                self.showModal = true
+            self.showModal = true
+
+            Task{
+                try? await callAPI(for: code.payloadStringValue)
             }
         @unknown default:
-            print("Should not happen")
+            break
         }
     }
 

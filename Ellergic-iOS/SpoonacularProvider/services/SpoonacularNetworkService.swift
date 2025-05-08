@@ -1,9 +1,7 @@
 //
 //  SpoonacularNetworkManager.swift
 //  Ellergic-iOS
-//
-//  Created by Derek Howes on 5/1/25.
-//
+
 
 import Foundation
 

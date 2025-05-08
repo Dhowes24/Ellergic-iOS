@@ -14,7 +14,6 @@ public class SpoonacularManager {
         self.networkingService = networkingService
     }
 
-    //Test UPC for Cadbury Eggs
     func buildURL(with UPC: String) -> URL? {
         guard let key = apiKey else { return nil }
         return URL(string: "\(searchProductsByUpcString)\(UPC)?apiKey=\(key)")
@@ -31,10 +30,14 @@ public class SpoonacularManager {
         }
     }
 
-    func findProductIngredients(for UPC: String = "034000011346") async throws -> ProductByUpcResults? {
-        guard let apiURL = buildURL(with: UPC) else { return nil }
+    func findProductIngredients(for UPC: String) async throws -> ProductByUpcResults? {
+        guard let apiURL = buildURL(with: UPC) else {
+            //TODO: Error Handling
+            return nil }
 
-        guard let data = try await networkingService.fetchData(apiURL: apiURL) else { return nil }
+        guard let data = try await networkingService.fetchData(apiURL: apiURL) else {
+            //TODO: Error Handling
+            return nil }
 
         return try decodeResults(from: data)
     }
