@@ -9,7 +9,7 @@ import Combine
 
 @MainActor
 class DocumentScannerViewModel: ObservableObject {
-    let spoonacularProvider = SpoonacularManager()
+    let spoonacularProvider = SpoonacularManager(networkingService: MockNetworkingService())
 
     @Published var returnedResults: ProductByUpcResults?
     @Published var roundBoxMappings: [UUID: UIView] = [:]
@@ -34,7 +34,7 @@ class DocumentScannerViewModel: ObservableObject {
         if let UPC {
             self.returnedResults = try await spoonacularProvider.findProductIngredients(for: UPC)
         } else {
-            //TODO: Eventual Error handleing
+            //TODO: Eventual Error handling
             self.returnedResults = try await spoonacularProvider.findProductIngredients(for: "0074890001959")
         }
     }
@@ -58,9 +58,10 @@ class DocumentScannerViewModel: ObservableObject {
         case .barcode(let code):
             let frame = getRoundBoxFrame(item: item)
             addRoundBoxToItem(frame: frame, text: code.payloadStringValue ?? "Cannot determine", item: item)
-            self.showModal = true
 
             Task{
+                try? await Task.sleep(nanoseconds: 500_000_000)
+                self.showModal = true
                 try? await callAPI(for: code.payloadStringValue)
             }
         @unknown default:
@@ -70,7 +71,10 @@ class DocumentScannerViewModel: ObservableObject {
 
     func addRoundBoxToItem(frame: CGRect, text: String, item: RecognizedItem) {
         let roundedRectView = RoundedRectLabel(frame: frame)
-        roundedRectView.setText(text: text)
+        roundedRectView.alpha = 0
+        UIView.animate(withDuration: 0.2) {
+            roundedRectView.alpha = 1
+        }
         scannerViewController.overlayContainerView.addSubview(roundedRectView)
         roundBoxMappings[item.id] = roundedRectView
     }
@@ -84,14 +88,14 @@ class DocumentScannerViewModel: ObservableObject {
         }
     }
 
-    func updateRoundBoxToItem(item: RecognizedItem) {
-        if let roundBoxView = roundBoxMappings[item.id] {
-            if roundBoxView.superview != nil {
-                let frame = getRoundBoxFrame(item: item)
-                roundBoxView.frame = frame
-            }
-        }
-    }
+//    func updateRoundBoxToItem(item: RecognizedItem) {
+//        if let roundBoxView = roundBoxMappings[item.id] {
+//            if roundBoxView.superview != nil {
+//                let frame = getRoundBoxFrame(item: item)
+//                roundBoxView.frame = frame
+//            }
+//        }
+//    }
 
     func getRoundBoxFrame(item: RecognizedItem) -> CGRect {
         let frame = CGRect(

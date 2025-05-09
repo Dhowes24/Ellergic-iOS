@@ -14,10 +14,6 @@ struct ContentView: View {
         .ignoresSafeArea()
         .sheet(isPresented: $docViewModel.showModal) {
             VStack {
-                Image(systemName: "tortoise")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-
                 if let returnedResults = docViewModel.returnedResults {
                     Text(returnedResults.title)
                     List(returnedResults.ingredients, id: \.self) { ingredient in

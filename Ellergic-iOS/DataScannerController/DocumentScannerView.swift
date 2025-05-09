@@ -62,7 +62,6 @@ struct DocumentScannerView: UIViewControllerRepresentable {
         func processAddedItems(items: [RecognizedItem]) {
             for item in items {
                 parent.viewModel.processItem(item: item)
-//                parent.scannerViewController.stopScanning()
             }
         }
 
@@ -72,10 +71,10 @@ struct DocumentScannerView: UIViewControllerRepresentable {
             }
         }
 
-        func processUpdatedItems(items: [RecognizedItem]) {
-            for item in items {
-                parent.viewModel.updateRoundBoxToItem(item: item)
-            }
-        }
+//        func processUpdatedItems(items: [RecognizedItem]) {
+//            for item in items {
+//                parent.viewModel.updateRoundBoxToItem(item: item)
+//            }
+//        }
     }
 }
