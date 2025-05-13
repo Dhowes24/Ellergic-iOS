@@ -37,7 +37,7 @@ struct BoundsItem: Bounds {
     var bottomLeft: CGPoint
 }
 
-func convertItemBoundsToGenericBounds(item: RecognizedItem.Bounds) -> Bounds {
+func convertFromRecItemBounds(item: RecognizedItem.Bounds) -> Bounds {
     BoundsItem(
         topLeft: item.topLeft,
         topRight: item.topRight,

@@ -2,7 +2,6 @@
 //  MockURLProtocol.swift
 //  Ellergic-iOS
 
-
 import Foundation
 
 class MockURLProtocol: URLProtocol {

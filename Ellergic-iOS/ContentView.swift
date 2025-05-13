@@ -1,6 +1,5 @@
 //  Ellergic-iOS
 
-
 import SwiftUI
 import Foundation
 

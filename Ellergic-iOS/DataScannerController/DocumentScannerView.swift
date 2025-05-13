@@ -67,7 +67,7 @@ struct DocumentScannerView: UIViewControllerRepresentable {
                 case .barcode(let code):
                     let barcodeItem = BarcodeItem(
                         id: code.id,
-                        bounds: convertItemBoundsToGenericBounds(item: code.bounds),
+                        bounds: convertFromRecItemBounds(item: code.bounds),
                         payloadStringValue: code.payloadStringValue)
                     parent.viewModel.processItem(item: barcodeItem)
                 @unknown default:

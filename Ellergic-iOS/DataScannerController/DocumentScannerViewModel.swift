@@ -33,9 +33,7 @@ class DocumentScannerViewModel: ObservableObject {
         if let UPC {
             self.returnedResults = try await spoonacularProvider.findProductIngredients(for: UPC)
         } else {
-            //TODO: Eventual Error handling
-            // Test UPC for Cadbury Eggs
-            self.returnedResults = try await spoonacularProvider.findProductIngredients(for: "0074890001959")
+            throw DocumentScannerError.invalidUPC
         }
     }
 
@@ -56,9 +54,14 @@ class DocumentScannerViewModel: ObservableObject {
         addRoundBoxToItem(frame: frame, text: item.payloadStringValue ?? "Cannot determine", id: item.id)
 
             Task{
-                self.showModal = true
-                try? await callAPI(for: item.payloadStringValue)
-                completion?()
+                do {
+                    try await callAPI(for: item.payloadStringValue)
+                    self.showModal = true
+                    completion?()
+                } catch {
+                    print("Error calling API: \(error.localizedDescription)")
+                    throw DocumentScannerError.failedToFetchIngredients
+                }
             }
     }
 

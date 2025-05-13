@@ -1,6 +1,5 @@
 //  Ellergic-iOS
 
-
 import Foundation
 
 public class SpoonacularManager {
@@ -25,19 +24,18 @@ public class SpoonacularManager {
             let response = try decoder.decode(ProductByUpcResults.self, from: json)
             return response
         } catch {
-            print(error)
-            throw error
+            throw DocumentScannerError.invalidResponse
         }
     }
 
     func findProductIngredients(for UPC: String) async throws -> ProductByUpcResults? {
         guard let apiURL = buildURL(with: UPC) else {
-            //TODO: Error Handling
-            return nil }
+            throw DocumentScannerError.failedUrlCreation
+        }
 
         guard let data = try await networkingService.fetchData(apiURL: apiURL) else {
-            //TODO: Error Handling
-            return nil }
+            throw DocumentScannerError.failedToFetchIngredients
+   }
 
         return try decodeResults(from: data)
     }

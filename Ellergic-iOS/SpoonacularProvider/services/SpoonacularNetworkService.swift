@@ -2,7 +2,6 @@
 //  SpoonacularNetworkManager.swift
 //  Ellergic-iOS
 
-
 import Foundation
 
 class SpoonacularNetworkService: NetworkingService {
