@@ -4,6 +4,7 @@
 
 import Foundation
 import UIKit
+import VisionKit
 
 class RoundedRectLabel: UIView {
     private let cornerLength: CGFloat = 20
@@ -62,4 +63,14 @@ class RoundedRectLabel: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+func getRoundBoxFrame(bounds: Bounds) -> CGRect {
+    let frame = CGRect(
+        x: bounds.topLeft.x,
+        y: bounds.topLeft.y,
+        width: abs(bounds.topRight.x - bounds.topLeft.x) + 15,
+        height: abs(bounds.topLeft.y - bounds.bottomLeft.y) + 15
+    )
+    return frame
 }

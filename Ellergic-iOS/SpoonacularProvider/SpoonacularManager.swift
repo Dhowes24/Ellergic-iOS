@@ -10,7 +10,7 @@ public class SpoonacularManager {
 
     let networkingService: NetworkingService
 
-    init(networkingService: NetworkingService = SpoonacularNetworkService()) {
+    init(networkingService: NetworkingService) {
         self.networkingService = networkingService
     }
 

@@ -61,13 +61,24 @@ struct DocumentScannerView: UIViewControllerRepresentable {
 
         func processAddedItems(items: [RecognizedItem]) {
             for item in items {
-                parent.viewModel.processItem(item: item)
+                switch item {
+                case .text:
+                    break
+                case .barcode(let code):
+                    let barcodeItem = BarcodeItem(
+                        id: code.id,
+                        bounds: convertItemBoundsToGenericBounds(item: code.bounds),
+                        payloadStringValue: code.payloadStringValue)
+                    parent.viewModel.processItem(item: barcodeItem)
+                @unknown default:
+                    break
+                }
             }
         }
 
         func processRemovedItems(items: [RecognizedItem]) {
             for item in items {
-                parent.viewModel.removeRoundBoxFromItem(item: item)
+                parent.viewModel.removeRoundBoxFromItem(itemID: item.id)
             }
         }
 

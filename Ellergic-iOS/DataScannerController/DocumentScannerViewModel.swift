@@ -1,5 +1,5 @@
 //
-//  Untitled.swift
+//  DocumentScannerViewModel.swift
 //  Ellergic-iOS
 
 import Foundation
@@ -9,14 +9,13 @@ import Combine
 
 @MainActor
 class DocumentScannerViewModel: ObservableObject {
-    let spoonacularProvider = SpoonacularManager(networkingService: MockNetworkingService())
-
     @Published var returnedResults: ProductByUpcResults?
     @Published var roundBoxMappings: [UUID: UIView] = [:]
     @Published var showModal: Bool = false
 
     private var cancellables = Set<AnyCancellable>()
 
+    let spoonacularProvider: SpoonacularManager
     var scannerViewController: DataScannerViewController = DataScannerViewController(
         recognizedDataTypes: [.barcode()],
         qualityLevel: .accurate,
@@ -25,65 +24,59 @@ class DocumentScannerViewModel: ObservableObject {
         isHighlightingEnabled: false
     )
 
-    init() {
+    init(networkingService: NetworkingService = SpoonacularNetworkService()) {
+        self.spoonacularProvider = SpoonacularManager(networkingService: networkingService)
         observeModalState()
     }
 
-    // Test UPC for Cadbury Eggs
     func callAPI(for UPC: String?) async throws {
         if let UPC {
             self.returnedResults = try await spoonacularProvider.findProductIngredients(for: UPC)
         } else {
             //TODO: Eventual Error handling
+            // Test UPC for Cadbury Eggs
             self.returnedResults = try await spoonacularProvider.findProductIngredients(for: "0074890001959")
         }
     }
 
     private func observeModalState() {
         $showModal
-            .sink { newValue in
-                if !newValue {
-                    try? self.scannerViewController.startScanning()
-                } else {
+            .sink { showingModal in
+                if showingModal {
                     self.scannerViewController.stopScanning()
+                } else {
+                    try? self.scannerViewController.startScanning()
                 }
             }
             .store(in: &cancellables)
     }
 
-    func processItem(item: RecognizedItem) {
-        switch item {
-        case .text:
-            break
-        case .barcode(let code):
-            let frame = getRoundBoxFrame(item: item)
-            addRoundBoxToItem(frame: frame, text: code.payloadStringValue ?? "Cannot determine", item: item)
+    func processItem(item: BarcodeRepresentable, completion: (() -> Void)? = nil) {
+        let frame = getRoundBoxFrame(bounds: item.bounds)
+        addRoundBoxToItem(frame: frame, text: item.payloadStringValue ?? "Cannot determine", id: item.id)
 
             Task{
-                try? await Task.sleep(nanoseconds: 500_000_000)
                 self.showModal = true
-                try? await callAPI(for: code.payloadStringValue)
+                try? await callAPI(for: item.payloadStringValue)
+                completion?()
             }
-        @unknown default:
-            break
-        }
     }
 
-    func addRoundBoxToItem(frame: CGRect, text: String, item: RecognizedItem) {
+    func addRoundBoxToItem(frame: CGRect, text: String, id: UUID) {
         let roundedRectView = RoundedRectLabel(frame: frame)
         roundedRectView.alpha = 0
         UIView.animate(withDuration: 0.2) {
             roundedRectView.alpha = 1
         }
         scannerViewController.overlayContainerView.addSubview(roundedRectView)
-        roundBoxMappings[item.id] = roundedRectView
+        roundBoxMappings[id] = roundedRectView
     }
 
-    func removeRoundBoxFromItem(item: RecognizedItem) {
-        if let roundBoxView = roundBoxMappings[item.id] {
+    func removeRoundBoxFromItem(itemID: UUID) {
+        if let roundBoxView = roundBoxMappings[itemID] {
             if roundBoxView.superview != nil {
                 roundBoxView.removeFromSuperview()
-                roundBoxMappings.removeValue(forKey: item.id)
+                roundBoxMappings.removeValue(forKey: itemID)
             }
         }
     }
@@ -96,14 +89,4 @@ class DocumentScannerViewModel: ObservableObject {
 //            }
 //        }
 //    }
-
-    func getRoundBoxFrame(item: RecognizedItem) -> CGRect {
-        let frame = CGRect(
-            x: item.bounds.topLeft.x,
-            y: item.bounds.topLeft.y,
-            width: abs(item.bounds.topRight.x - item.bounds.topLeft.x) + 15,
-            height: abs(item.bounds.topLeft.y - item.bounds.bottomLeft.y) + 15
-        )
-        return frame
-    }
 }
