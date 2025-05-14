@@ -10,29 +10,31 @@ import VisionKit
 @MainActor
 final class DocumentScannerTests: XCTestCase {
     var mockDocumentScanner: DocumentScannerViewModel!
+    var mockBounds: BoundsItem!
+    var mockBarcodeItem: BarcodeItem!
 
     override func setUpWithError() throws {
         mockDocumentScanner = DocumentScannerViewModel(networkingService: MockNetworkingService())
-    }
 
-    override func tearDownWithError() throws {
-        mockDocumentScanner = nil
-    }
-
-    func testProcessItem() {
-        let mockBounds = BoundsItem(
+        mockBounds = BoundsItem(
             topLeft: CGPoint(x: 89.29, y: 537.40),
             topRight: CGPoint(x: 212.94, y: 537.40),
             bottomRight: CGPoint(x: 87.00, y: 600.11),
             bottomLeft: CGPoint(x: 210.94, y: 600.11)
         )
 
-        let mockBarcodeItem = BarcodeItem(
+        mockBarcodeItem = BarcodeItem(
             id: UUID(),
             bounds: mockBounds,
             payloadStringValue: "01010101010"
         )
+    }
 
+    override func tearDownWithError() throws {
+        mockDocumentScanner = nil
+    }
+
+    func testProcessItemSuccess() {
         XCTAssertFalse(mockDocumentScanner.showModal)
         XCTAssertNil(mockDocumentScanner.returnedResults)
 
@@ -47,5 +49,24 @@ final class DocumentScannerTests: XCTestCase {
         // Then assert expected changes
         XCTAssertTrue(mockDocumentScanner.showModal)
         XCTAssertNotNil(mockDocumentScanner.returnedResults)
+    }
+
+    func testProcessItemFailure() {
+        let emptyBarcodeItem = BarcodeItem(
+            id: UUID(),
+            bounds: mockBounds,
+            payloadStringValue: nil)
+
+        XCTAssertFalse(mockDocumentScanner.showModal)
+        XCTAssertNil(mockDocumentScanner.returnedResults)
+
+        let expectation = XCTestExpectation(description: "API call completes")
+
+        mockDocumentScanner.processItem(item: emptyBarcodeItem) {
+            expectation.fulfill()
+        }
+
+        XCTAssertFalse(mockDocumentScanner.showModal)
+        XCTAssertNil(mockDocumentScanner.returnedResults)
     }
 }

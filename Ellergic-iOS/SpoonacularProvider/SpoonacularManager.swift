@@ -4,12 +4,13 @@ import Foundation
 
 public class SpoonacularManager {
     //Temp storage, will change and reset key
-    let searchProductsByUpcString = "https://api.spoonacular.com/food/products/upc/"
+    let searchProductsByUpcString: String
     let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String
 
     let networkingService: NetworkingService
 
-    init(networkingService: NetworkingService) {
+    init(networkingService: NetworkingService, baseURL: String = "https://api.spoonacular.com/food/products/upc/") {
+        self.searchProductsByUpcString = baseURL
         self.networkingService = networkingService
     }
 
@@ -33,9 +34,16 @@ public class SpoonacularManager {
             throw DocumentScannerError.failedUrlCreation
         }
 
-        guard let data = try await networkingService.fetchData(apiURL: apiURL) else {
+        let data: Data
+
+        do {
+            guard let fetchedData = try await networkingService.fetchData(apiURL: apiURL) else {
+                throw DocumentScannerError.failedToFetchIngredients
+            }
+            data = fetchedData
+        } catch {
             throw DocumentScannerError.failedToFetchIngredients
-   }
+        }
 
         return try decodeResults(from: data)
     }

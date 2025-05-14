@@ -15,7 +15,7 @@ class DocumentScannerViewModel: ObservableObject {
 
     private var cancellables = Set<AnyCancellable>()
 
-    let spoonacularProvider: SpoonacularManager
+    let spoonacularManager: SpoonacularManager
     var scannerViewController: DataScannerViewController = DataScannerViewController(
         recognizedDataTypes: [.barcode()],
         qualityLevel: .accurate,
@@ -25,13 +25,13 @@ class DocumentScannerViewModel: ObservableObject {
     )
 
     init(networkingService: NetworkingService = SpoonacularNetworkService()) {
-        self.spoonacularProvider = SpoonacularManager(networkingService: networkingService)
+        self.spoonacularManager = SpoonacularManager(networkingService: networkingService)
         observeModalState()
     }
 
     func callAPI(for UPC: String?) async throws {
         if let UPC {
-            self.returnedResults = try await spoonacularProvider.findProductIngredients(for: UPC)
+            self.returnedResults = try await spoonacularManager.findProductIngredients(for: UPC)
         } else {
             throw DocumentScannerError.invalidUPC
         }
