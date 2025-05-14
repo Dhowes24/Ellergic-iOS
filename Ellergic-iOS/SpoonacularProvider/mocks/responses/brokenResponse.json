@@ -1,0 +1,63 @@
+{
+  "breadcrumbs": [
+    "creme eggs",
+    "chocolate eggs",
+    "candy eggs",
+    "candy",
+    "ingredient"
+  ],
+  "spoonacularScore": 100.0,
+  "ingredients": [
+    { "name": "natural", "safety_level": null, "description": null },
+    { "name": "anticaking agent", "safety_level": null, "description": null },
+    {
+      "name": "artificial flavor",
+      "safety_level": "medium",
+      "description": null
+    },
+    { "name": "added sugar", "safety_level": null, "description": null },
+    { "name": "acidity regulator", "safety_level": null, "description": null },
+    { "name": "stabilizer", "safety_level": null, "description": null },
+    { "name": "milk", "safety_level": null, "description": null },
+    { "name": "lecithin", "safety_level": null, "description": null },
+    { "name": "vegetable oil", "safety_level": null, "description": null },
+    { "name": "sodium carbonate", "safety_level": "high", "description": null },
+    { "name": "cooking fat", "safety_level": null, "description": null },
+    { "name": "refined sweetener", "safety_level": null, "description": null },
+    { "name": "cooking oil", "safety_level": null, "description": null },
+    { "name": "chocolate", "safety_level": null, "description": null },
+    { "name": "palm oil", "safety_level": null, "description": null },
+    { "name": "sugar", "safety_level": null, "description": null },
+    { "name": "additive", "safety_level": null, "description": null },
+    {
+      "name": "high fructose corn syrup",
+      "safety_level": "controversial",
+      "description": null
+    },
+    { "name": "cocoa butter", "safety_level": "high", "description": null },
+    { "name": "milk fat", "safety_level": "high", "description": null },
+    { "name": "nonfat milk", "safety_level": null, "description": null },
+    { "name": "milk chocolate", "safety_level": null, "description": null },
+    { "name": "leavening", "safety_level": "high", "description": null },
+    { "name": "corn syrup", "safety_level": null, "description": null },
+    { "name": "emulsifier", "safety_level": null, "description": null },
+    {
+      "name": "soy lecithin",
+      "safety_level": "high",
+      "description": "Soy lecithin is <a href=\"http://farrp.unl.edu/resources/gi-fas/opinion-and-summaries/soy-lecithin\">not a concern</a> for most people allergic to soy."
+    },
+    { "name": "sweetener", "safety_level": null, "description": null },
+    { "name": "nutrient", "safety_level": null, "description": null },
+    { "name": "drink", "safety_level": null, "description": null },
+    { "name": "mineral", "safety_level": null, "description": null },
+    { "name": "salt", "safety_level": null, "description": null }
+  ],
+  "ingredientCount": 31,
+  "ingredientList": "Milk Chocolate (Sugar, Milk, Chocolate, Cocoa Butter, Milk Fat, Nonfat Milk, Soy Lecithin, Natural and Artificial Flavor), Corn Syrup, High Fructose Corn Syrup, Sugar, Nonfat Milk, Palm Oil, Contains 2% or Less of: Artificial Flavor, Salt, Soy Lecithin, Sodium Carbonate",
+  "credits": {
+    "text": "openfoodfacts.org under (ODbL) v1.0",
+    "link": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "image": "openfoodfacts.org under CC BY-SA 3.0 DEED",
+    "imageLink": "https://creativecommons.org/licenses/by-sa/3.0/deed.en"
+  }
+}

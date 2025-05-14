@@ -1,30 +1,26 @@
 //  Ellergic-iOS
 
-
 import SwiftUI
 import Foundation
 
 struct ContentView: View {
-    @StateObject private var viewModel = ContentViewModel()
+    @StateObject private var docViewModel = DocumentScannerViewModel()
 
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-                .onTapGesture {
-                    Task {
-                        try await viewModel.callAPI()
+        ZStack {
+            DocumentScannerView(viewModel: docViewModel)
+        }
+        .ignoresSafeArea()
+        .sheet(isPresented: $docViewModel.showModal) {
+            VStack {
+                if let returnedResults = docViewModel.returnedResults {
+                    Text(returnedResults.title)
+                    List(returnedResults.ingredients, id: \.self) { ingredient in
+                        Text(ingredient.name)
                     }
-                }
-
-            if let returnedResults = viewModel.returnedResults {
-                List(returnedResults.ingredients, id: \.self) { ingredient in
-                    Text(ingredient.name)
                 }
             }
         }
-        .padding()
     }
 }
 

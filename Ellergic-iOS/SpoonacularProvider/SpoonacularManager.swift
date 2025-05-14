@@ -1,20 +1,19 @@
 //  Ellergic-iOS
 
-
 import Foundation
 
 public class SpoonacularManager {
     //Temp storage, will change and reset key
-    let searchProductsByUpcString = "https://api.spoonacular.com/food/products/upc/"
+    let searchProductsByUpcString: String
     let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String
 
     let networkingService: NetworkingService
 
-    init(networkingService: NetworkingService = SpoonacularNetworkService()) {
+    init(networkingService: NetworkingService, baseURL: String = "https://api.spoonacular.com/food/products/upc/") {
+        self.searchProductsByUpcString = baseURL
         self.networkingService = networkingService
     }
 
-    //Test UPC for Cadbury Eggs
     func buildURL(with UPC: String) -> URL? {
         guard let key = apiKey else { return nil }
         return URL(string: "\(searchProductsByUpcString)\(UPC)?apiKey=\(key)")
@@ -26,15 +25,25 @@ public class SpoonacularManager {
             let response = try decoder.decode(ProductByUpcResults.self, from: json)
             return response
         } catch {
-            print(error)
-            throw error
+            throw DocumentScannerError.invalidResponse
         }
     }
 
-    func findProductIngredients(for UPC: String = "034000011346") async throws -> ProductByUpcResults? {
-        guard let apiURL = buildURL(with: UPC) else { return nil }
+    func findProductIngredients(for UPC: String) async throws -> ProductByUpcResults? {
+        guard let apiURL = buildURL(with: UPC) else {
+            throw DocumentScannerError.failedUrlCreation
+        }
 
-        guard let data = try await networkingService.fetchData(apiURL: apiURL) else { return nil }
+        let data: Data
+
+        do {
+            guard let fetchedData = try await networkingService.fetchData(apiURL: apiURL) else {
+                throw DocumentScannerError.failedToFetchIngredients
+            }
+            data = fetchedData
+        } catch {
+            throw DocumentScannerError.failedToFetchIngredients
+        }
 
         return try decodeResults(from: data)
     }
