@@ -14,10 +14,7 @@ struct ContentView: View {
         .sheet(isPresented: $docViewModel.showModal) {
             VStack {
                 if let returnedResults = docViewModel.returnedResults {
-                    Text(returnedResults.title)
-                    List(returnedResults.ingredients, id: \.self) { ingredient in
-                        Text(ingredient.name)
-                    }
+                    Text(returnedResults.foods[0].foodName)
                 }
             }
         }
