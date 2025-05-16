@@ -5,5 +5,5 @@
 import Foundation
 
 protocol NetworkingService {
-    func fetchData(apiURL: URL) async throws -> Data?
+    func fetchData(urlRequest: URLRequest) async throws -> Data?
 }

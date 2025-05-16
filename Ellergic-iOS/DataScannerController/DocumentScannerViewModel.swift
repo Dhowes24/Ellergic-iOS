@@ -9,13 +9,13 @@ import Combine
 
 @MainActor
 class DocumentScannerViewModel: ObservableObject {
-    @Published var returnedResults: ProductByUpcResults?
+    @Published var returnedResults: FoodResponse?
     @Published var roundBoxMappings: [UUID: UIView] = [:]
     @Published var showModal: Bool = false
 
     private var cancellables = Set<AnyCancellable>()
 
-    let spoonacularManager: SpoonacularManager
+    let ingredientApiManager: IngredientApiManager
     var scannerViewController: DataScannerViewController = DataScannerViewController(
         recognizedDataTypes: [.barcode()],
         qualityLevel: .accurate,
@@ -24,16 +24,16 @@ class DocumentScannerViewModel: ObservableObject {
         isHighlightingEnabled: false
     )
 
-    init(networkingService: NetworkingService = SpoonacularNetworkService()) {
-        self.spoonacularManager = SpoonacularManager(networkingService: networkingService)
+    init(networkingService: NetworkingService = IngredientApiNetworkService()) {
+        self.ingredientApiManager = IngredientApiManager(networkingService: networkingService)
         observeModalState()
     }
 
     func callAPI(for UPC: String?) async throws {
         if let UPC {
-            self.returnedResults = try await spoonacularManager.findProductIngredients(for: UPC)
+            self.returnedResults = try await ingredientApiManager.findProductIngredients(for: UPC)
         } else {
-            throw DocumentScannerError.invalidUPC
+            throw IngredientManagerError.invalidUPC
         }
     }
 
@@ -60,7 +60,7 @@ class DocumentScannerViewModel: ObservableObject {
                     completion?()
                 } catch {
                     print("Error calling API: \(error.localizedDescription)")
-                    throw DocumentScannerError.failedToFetchIngredients
+                    throw IngredientManagerError.failedToFetchIngredients
                 }
             }
     }

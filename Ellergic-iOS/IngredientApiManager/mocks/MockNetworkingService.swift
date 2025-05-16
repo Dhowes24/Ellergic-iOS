@@ -12,8 +12,8 @@ class MockNetworkingService: NetworkingService {
     }
 
     // Response for UPC 034000011346 - Cadbury Eggs
-    func fetchData(apiURL: URL) async throws -> Data? {
-        guard let url = Bundle.main.url(forResource: breakResponse ? "brokenResponse" : "response", withExtension: "json") else {
+    func fetchData(urlRequest: URLRequest) async throws -> Data? {
+        guard let url = Bundle.main.url(forResource: breakResponse ? "brokenUpcResponse" : "correctUpcResponse", withExtension: "json") else {
             throw NSError(domain: "LocalJSON", code: 1, userInfo: [NSLocalizedDescriptionKey: "File not found"])
         }
         if let data = try? Data(contentsOf: url) {

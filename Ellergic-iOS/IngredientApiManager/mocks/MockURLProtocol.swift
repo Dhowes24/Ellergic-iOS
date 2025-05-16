@@ -10,7 +10,8 @@ class MockURLProtocol: URLProtocol {
     override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
 
     override func startLoading() {
-        client?.urlProtocolDidFinishLoading(self)
+        let error = NSError(domain: "MockError", code: -1, userInfo: nil)
+        client?.urlProtocol(self, didFailWithError: error)
     }
 
     override func stopLoading() {}

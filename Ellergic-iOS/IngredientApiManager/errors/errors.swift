@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum DocumentScannerError: Error, LocalizedError {
+enum IngredientManagerError: Error, LocalizedError {
     case invalidUPC
     case failedToFetchIngredients
     case invalidResponse
