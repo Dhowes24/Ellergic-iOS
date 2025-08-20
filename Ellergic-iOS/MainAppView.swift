@@ -3,10 +3,11 @@
 import SwiftUI
 import Foundation
 
-struct ContentView: View {
+struct MainAppView: View {
     @State private var path = NavigationPath()
     @StateObject private var docViewModel = DocumentScannerViewModel()
     @State private var offset = CGSize.zero
+    let onLogout: () -> Void
 
     var drag: some Gesture {
         DragGesture(minimumDistance: 50)
@@ -42,5 +43,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    MainAppView(onLogout: {})
 }

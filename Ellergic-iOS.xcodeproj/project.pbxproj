@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1E90E5B32E4B8E8B00BCE23B /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = 1E90E5B22E4B8E8B00BCE23B /* FirebaseAI */; };
+		1E90E5B52E4B8E8B00BCE23B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1E90E5B42E4B8E8B00BCE23B /* FirebaseAnalytics */; };
+		1E90E5B72E4B8E8B00BCE23B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1E90E5B62E4B8E8B00BCE23B /* FirebaseAuth */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1EBFE0E82DC0045500B2FE0C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -30,6 +36,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1E90E5AF2E4B8D7900BCE23B /* Exceptions for "Ellergic-iOS" folder in "Ellergic-iOSTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"GoogleService-Info.plist",
+			);
+			target = 1EBFE0E62DC0045500B2FE0C /* Ellergic-iOSTests */;
+		};
+		1E90E5B02E4B8D7900BCE23B /* Exceptions for "Ellergic-iOS" folder in "Ellergic-iOSUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"GoogleService-Info.plist",
+			);
+			target = 1EBFE0F02DC0045500B2FE0C /* Ellergic-iOSUITests */;
+		};
 		1EBFE1342DC95E4600B2FE0C /* Exceptions for "Ellergic-iOS" folder in "Ellergic-iOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -44,6 +64,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				1EBFE1342DC95E4600B2FE0C /* Exceptions for "Ellergic-iOS" folder in "Ellergic-iOS" target */,
+				1E90E5AF2E4B8D7900BCE23B /* Exceptions for "Ellergic-iOS" folder in "Ellergic-iOSTests" target */,
+				1E90E5B02E4B8D7900BCE23B /* Exceptions for "Ellergic-iOS" folder in "Ellergic-iOSUITests" target */,
 			);
 			path = "Ellergic-iOS";
 			sourceTree = "<group>";
@@ -65,6 +87,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E90E5B52E4B8E8B00BCE23B /* FirebaseAnalytics in Frameworks */,
+				1E90E5B72E4B8E8B00BCE23B /* FirebaseAuth in Frameworks */,
+				1E90E5B32E4B8E8B00BCE23B /* FirebaseAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +150,9 @@
 			);
 			name = "Ellergic-iOS";
 			packageProductDependencies = (
+				1E90E5B22E4B8E8B00BCE23B /* FirebaseAI */,
+				1E90E5B42E4B8E8B00BCE23B /* FirebaseAnalytics */,
+				1E90E5B62E4B8E8B00BCE23B /* FirebaseAuth */,
 			);
 			productName = "Ellergic-iOS";
 			productReference = 1EBFE0DA2DC0045300B2FE0C /* Ellergic-iOS.app */;
@@ -208,6 +236,9 @@
 			);
 			mainGroup = 1EBFE0D12DC0045300B2FE0C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1E90E5B12E4B8E8B00BCE23B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1EBFE0DB2DC0045300B2FE0C /* Products */;
 			projectDirPath = "";
@@ -583,6 +614,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1E90E5B12E4B8E8B00BCE23B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1E90E5B22E4B8E8B00BCE23B /* FirebaseAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E90E5B12E4B8E8B00BCE23B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAI;
+		};
+		1E90E5B42E4B8E8B00BCE23B /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E90E5B12E4B8E8B00BCE23B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		1E90E5B62E4B8E8B00BCE23B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E90E5B12E4B8E8B00BCE23B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1EBFE0D22DC0045300B2FE0C /* Project object */;
 }

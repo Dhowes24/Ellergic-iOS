@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>308433746827-um6uj35btpdpi15fc2l5as6nuoe3bta2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.308433746827-um6uj35btpdpi15fc2l5as6nuoe3bta2</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCFzNQL1jlXCegsYqu35kqOZieYmdMuvxo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>308433746827</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>derek-howes.Ellergic-iOS</string>
+	<key>PROJECT_ID</key>
+	<string>e-llergic-72e45</string>
+	<key>STORAGE_BUCKET</key>
+	<string>e-llergic-72e45.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:308433746827:ios:1aeaf3c65fe3b8d6730d8e</string>
+</dict>
+</plist>
