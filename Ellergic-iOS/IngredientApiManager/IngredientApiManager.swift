@@ -4,8 +4,8 @@ import Foundation
 
 public class IngredientApiManager {
     //Temp storage, will change and reset key
-    let nutrionixAppKey = Bundle.main.infoDictionary?["Nutrionix_App_Key"] as? String
-    let nutrionixAppId = Bundle.main.infoDictionary?["Nutrionix_App_ID"] as? String
+    let nutrionixAppKey = Bundle.main.infoDictionary?["Nutrionix_App_Key"] as? String ?? ""
+    let nutrionixAppId = Bundle.main.infoDictionary?["Nutrionix_App_ID"] as? String ?? ""
 
     let networkingService: NetworkingService
 
@@ -14,15 +14,16 @@ public class IngredientApiManager {
     }
 
     func buildNutritionixURL(with barcode: String) -> URLRequest? {
-        guard let url = URL(string: "https://trackapi.nutritionix.com/v2/search/item/?upc=\(barcode)") else {
+//        guard let url = URL(string: "https://trackapi.nutritionix.com/v2/search/item/?upc=\(barcode)") else {
+        guard let url = URL(string: "https://trackapi.nutritionix.com/v2/search/item/?upc=49000000450") else {
             return nil
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.addValue(nutrionixAppId ?? "", forHTTPHeaderField: "x-app-id")
-        request.addValue(nutrionixAppKey ?? "", forHTTPHeaderField: "x-app-key")
+        request.addValue(nutrionixAppId, forHTTPHeaderField: "x-app-id")
+        request.addValue(nutrionixAppKey, forHTTPHeaderField: "x-app-key")
 
         return request
     }
